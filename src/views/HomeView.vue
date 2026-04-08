@@ -2,7 +2,7 @@
     <div class="container">
         <h1>TaskFlow</h1>
 
-        <TaskForm />
+        <TaskForm /><br>
         <TaskList />
     </div>
 </template>

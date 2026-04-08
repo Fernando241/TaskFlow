@@ -1,8 +1,14 @@
 <template>
-    <div @click="store.toggleTask(task.id)">
-    <span :style="{ textDecoration: task.completed ? 'line-through' : 'none' }">
-        {{ task.text }}
+    <div>
+    <button @click="remove">❌</button>
+    <span 
+        @click="toggle"
+        :style="{ textDecoration: task.completed ? 'line-through' : 'none', cursor: 'pointer' }"
+    >  ----- 
+        {{ task.title }}
     </span>
+
+    
     </div>
 </template>
 
@@ -14,4 +20,12 @@ const props = defineProps({
 })
 
 const store = useTaskStore()
+
+const toggle = () => {
+    store.toggleTask(props.task.id)
+}
+
+const remove = () => {
+    store.deleteTask(props.task.id)
+}
 </script>
