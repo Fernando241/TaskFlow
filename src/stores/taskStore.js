@@ -1,25 +1,42 @@
 import { defineStore } from 'pinia'
-import { ref, computed } from 'vue'
 
-export const useTaskStore = defineStore('tasks', () => {
-    const tasks = ref([])
+export const useTaskStore = defineStore('task', {
+    state: () => ({
+    tasks: []
+    }),
 
-    const addTask = (text) => {
-    tasks.value.push({
+    actions: {
+    loadTasks() {
+        const data = localStorage.getItem('tasks')
+        if (data) {
+        this.tasks = JSON.parse(data)
+        }
+    },
+
+    saveTasks() {
+        localStorage.setItem('tasks', JSON.stringify(this.tasks))
+    },
+
+    addTask(task) {
+        this.tasks.push({
         id: Date.now(),
-        text,
+        title: task,
         completed: false
-    })
-    }
+        })
+        this.saveTasks()
+    },
 
-    const toggleTask = (id) => {
-    const task = tasks.value.find(t => t.id === id)
-    if (task) task.completed = !task.completed
-    }
+    toggleTask(id) {
+        const task = this.tasks.find(t => t.id === id)
+        if (task) {
+        task.completed = !task.completed
+        this.saveTasks()
+        }
+    },
 
-    return {
-    tasks,
-    addTask,
-    toggleTask
+    deleteTask(id) {
+        this.tasks = this.tasks.filter(t => t.id !== id)
+        this.saveTasks()
+    }
     }
 })
