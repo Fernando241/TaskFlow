@@ -1,44 +1,51 @@
-# taskflow
+# TaskFlow
 
-This template should help get you started developing with Vue 3 in Vite.
+TaskFlow is a simple yet scalable task management application built with Vue 3.
+This project is part of a hands-on learning process focused on mastering modern frontend architecture using Vue.
 
-## Recommended IDE Setup
+## 🚀 Tech Stack
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+* Vue 3 (Composition API)
+* Vue Router
+* Pinia (State Management)
+* Vite
+* ESLint + Prettier
 
-## Recommended Browser Setup
+## 📦 Features (Current)
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd)
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+* Add new tasks
+* Display task list
+* Toggle task completion
+* Centralized state management with Pinia
 
-## Customize configuration
+## 🧠 Purpose
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+The goal of this project is to learn Vue.js through real-world practices, focusing on:
 
-## Project Setup
+* Component-based architecture
+* State management
+* Scalable folder structure
+* Clean and maintainable code
 
-```sh
+## 📁 Project Structure
+
+src/
+├── views/
+├── components/
+│   └── tasks/
+├── stores/
+
+## ▶️ Getting Started
+
+```bash
 npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
 npm run dev
 ```
 
-### Compile and Minify for Production
+## 📌 Status
 
-```sh
-npm run build
-```
+This project is under active development as part of a structured learning roadmap.
 
-### Lint with [ESLint](https://eslint.org/)
+## 📄 License
 
-```sh
-npm run lint
-```
+This project is for educational purposes.
