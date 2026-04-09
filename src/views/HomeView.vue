@@ -3,7 +3,10 @@
         <h1>TaskFlow</h1>
 
         <TaskForm /><br>
-        <TaskList />
+        <TaskList /><br><br>
+        <p>Total: {{ taskStore.totalTasks }}</p>
+        <p>Completadas: {{ taskStore.completedTasks }}</p>
+        <p>Pendientes: {{ taskStore.pendingTasks }}</p>
     </div>
 </template>
 

@@ -2,8 +2,34 @@ import { defineStore } from 'pinia'
 
 export const useTaskStore = defineStore('task', {
     state: () => ({
-    tasks: []
+    tasks: [],
+    filter: 'all', //'all' | 'completed' | 'pending'
     }),
+
+    getters: {
+    filteredTasks(state) {
+        switch (state.filter) {
+        case 'completed':
+            return state.tasks.filter(task => task.completed)
+        case 'pending':
+            return state.tasks.filter(task => !task.completed)
+        default:
+            return state.tasks
+        }
+    },
+
+    totalTasks(state) {
+        return state.tasks.length
+    },
+
+    completedTasks(state) {
+        return state.tasks.filter(task => task.completed).length
+    },
+
+    pendingTasks(state) {
+        return state.tasks.filter(task => !task.completed).length
+    }
+    },    
 
     actions: {
     loadTasks() {
@@ -37,6 +63,11 @@ export const useTaskStore = defineStore('task', {
     deleteTask(id) {
         this.tasks = this.tasks.filter(t => t.id !== id)
         this.saveTasks()
+    },
+
+    setFilter(newFilter) {
+    this.filter = newFilter
     }
+
     }
 })

@@ -1,7 +1,12 @@
 <template>
     <div>
+
+    <p v-if="!store.filteredTasks.length">
+        No hay tareas en este filtro
+    </p>
+
     <TaskItem
-        v-for="task in store.tasks"
+        v-for="task in store.filteredTasks"
         :key="task.id"
         :task="task"
     />
