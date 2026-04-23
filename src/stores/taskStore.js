@@ -4,6 +4,8 @@ export const useTaskStore = defineStore('task', {
     state: () => ({
     tasks: [],
     currentFilter: 'all', //'all' | 'completed' | 'pending'
+    isLoading: false,
+    lastAddedTaskId: null
     }),
 
     getters: {
@@ -44,12 +46,20 @@ export const useTaskStore = defineStore('task', {
     },
 
     addTask(task) {
-        this.tasks.push({
-        id: Date.now(),
-        title: task,
-        completed: false
-        })
+        const newTask = {
+            id: Date.now(),
+            title: task,
+            completed: false
+        }
+
+        this.tasks.push(newTask)
+        this.lastAddedTaskId = newTask.id
+
         this.saveTasks()
+
+        setTimeout(() => {
+            this.lastAddedTaskId = null
+        }, 1000)
     },
 
     toggleTask(id) {
@@ -81,9 +91,15 @@ export const useTaskStore = defineStore('task', {
         }
     },
 
-    init() {
+    async init() {
+        this.isLoading = true
+
+        await new Promise(resolve => setTimeout(resolve, 500)) // simulación
+
         this.loadTasks()
         this.loadFilter()
+
+        this.isLoading = false
     }
 
     }

@@ -1,5 +1,10 @@
 <template>
-    <div class="task-item" :class="{ completed: task.completed }">
+    <div 
+        class="task-item" 
+        :class="{ 
+            completed: task.completed,
+            highlight: task.id === taskStore.lastAddedTaskId
+        }">
     
     <input 
         type="checkbox" 
@@ -81,6 +86,11 @@ const remove = () => {
 .task-item input[type=checkbox] {
     cursor: pointer;
     transform: scale(1.1);
+}
+
+.highlight {
+    background: #e0ffe0;
+    transition: background 0.5s ease;
 }
 
 </style>

@@ -20,7 +20,7 @@ import TaskList from '@/components/tasks/TaskList.vue'
 const taskStore = useTaskStore()
 
 onMounted(() => {
-    taskStore.loadTasks()
+    taskStore.init()
 })
 </script>
 
