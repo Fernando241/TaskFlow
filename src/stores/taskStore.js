@@ -3,12 +3,12 @@ import { defineStore } from 'pinia'
 export const useTaskStore = defineStore('task', {
     state: () => ({
     tasks: [],
-    filter: 'all', //'all' | 'completed' | 'pending'
+    currentFilter: 'all', //'all' | 'completed' | 'pending'
     }),
 
     getters: {
     filteredTasks(state) {
-        switch (state.filter) {
+        switch (state.currentFilter) {
         case 'completed':
             return state.tasks.filter(task => task.completed)
         case 'pending':
@@ -65,8 +65,25 @@ export const useTaskStore = defineStore('task', {
         this.saveTasks()
     },
 
-    setFilter(newFilter) {
-    this.filter = newFilter
+    setFilter(filter) {
+    this.currentFilter = filter
+    this.saveFilter()
+    },
+
+    saveFilter() {
+        localStorage.setItem('taskflow_filter', this.currentFilter)
+    },
+
+    loadFilter() {
+        const savedFilter = localStorage.getItem('taskflow_filter')
+        if (savedFilter) {
+            this.currentFilter = savedFilter
+        }
+    },
+
+    init() {
+        this.loadTasks()
+        this.loadFilter()
     }
 
     }

@@ -16,7 +16,7 @@ const setFilter = (filter) => {
         v-for="f in filters"
         :key="f"
         @click="setFilter(f)"
-        :class="{ active: taskStore.filter === f }"
+        :class="{ active: taskStore.currentFilter === f }"
     >
         {{ f }}
     </button>
