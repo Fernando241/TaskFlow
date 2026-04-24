@@ -1,7 +1,8 @@
 # TaskFlow
 
-TaskFlow is a simple yet scalable task management application built with Vue 3.
-This project is part of a hands-on learning process focused on mastering modern frontend architecture using Vue.
+TaskFlow is a task management application built with Vue 3, designed as a real-world project to master scalable frontend architecture, state management, and professional development practices.
+
+---
 
 ## 🚀 Tech Stack
 
@@ -11,29 +12,90 @@ This project is part of a hands-on learning process focused on mastering modern 
 * Vite
 * ESLint + Prettier
 
-## 📦 Features (Current)
+---
 
-* Add new tasks
-* Display task list
-* Toggle task completion
-* Centralized state management with Pinia
+## 📦 Features
+
+* Full CRUD for tasks
+* Persistent state using localStorage
+* Task filtering (All / Completed / Pending)
+* Derived state using getters
+* Animated task list (TransitionGroup)
+* UI states (loading, empty, feedback)
+* Microinteractions and visual feedback
+
+---
 
 ## 🧠 Purpose
 
-The goal of this project is to learn Vue.js through real-world practices, focusing on:
+This project focuses on:
 
-* Component-based architecture
-* State management
-* Scalable folder structure
-* Clean and maintainable code
+* Building scalable frontend architecture
+* Managing state professionally with Pinia
+* Separating concerns between UI and logic
+* Preparing for real backend integration
+
+---
+
+## 🏗️ Architecture Decisions
+
+### State Management
+
+Pinia is used as the central store. Derived state is handled using getters to avoid duplication.
+
+### Persistence
+
+localStorage is used as a temporary persistence layer, abstracted to allow future API integration.
+
+### Component Design
+
+Components are modular and follow single responsibility principles.
+
+### UI/UX Strategy
+
+UI states (loading, empty, feedback) are explicitly handled to simulate real-world application behavior.
+
+---
 
 ## 📁 Project Structure
 
+```bash
 src/
 ├── views/
+│   └── HomeView.vue
 ├── components/
 │   └── tasks/
+│       ├── TaskForm.vue
+│       ├── TaskList.vue
+│       ├── TaskItem.vue
+│       └── TaskFilters.vue
 ├── stores/
+│   └── taskStore.js
+├── composables/   # (planned)
+├── services/      # (planned)
+```
+
+---
+
+## ⚙️ Constraints
+
+* No backend integration yet
+* localStorage used as temporary persistence
+* Focus on architecture before adding complexity
+
+---
+
+## 🗺️ Roadmap
+
+* [x] Task CRUD
+* [x] Local persistence (tasks + filters)
+* [x] UI states and animations
+* [ ] Introduce composables (logic extraction)
+* [ ] Abstract persistence layer (services)
+* [ ] Prepare API integration
+* [ ] Authentication and roles
+
+---
 
 ## ▶️ Getting Started
 
@@ -42,10 +104,14 @@ npm install
 npm run dev
 ```
 
+---
+
 ## 📌 Status
 
-This project is under active development as part of a structured learning roadmap.
+Currently transitioning from a monolithic store approach to a scalable architecture using composables and service layers.
+
+---
 
 ## 📄 License
 
-This project is for educational purposes.
+Educational project.
